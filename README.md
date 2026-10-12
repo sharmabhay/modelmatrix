@@ -1,2 +1,2 @@
 # modelmatrix
-Open-source LLM infrastructure.
+A local-first LLM experimentation and evaluation platform.
