@@ -71,15 +71,15 @@ def load_dataset(path: str | Path) -> EvaluationDataset:
     examples = []
     seen_ids = set()
     for index, raw_example in enumerate(raw_examples):
-        location = f"Example {index}"
+        location = f"examples[{index}]"
         raw_example = _require_object(raw_example, location)
 
-        example_id = _require_nonempty_string(raw_example.get("id"), f"{location} 'id'")
-        input_text = _require_nonempty_string(raw_example.get("input"), f"{location} 'input'")
-        expected = _require_nonempty_string(raw_example.get("expected"), f"{location} 'expected'")
+        example_id = _require_nonempty_string(raw_example.get("id"), f"{location}.id")
+        input_text = _require_nonempty_string(raw_example.get("input"), f"{location}.input")
+        expected = _require_nonempty_string(raw_example.get("expected"), f"{location}.expected")
 
         if example_id in seen_ids:
-            raise ValueError(f"Duplicate example ID '{example_id}' found in dataset.")
+            raise ValueError(f"Duplicate example ID '{example_id}' in dataset.")
         seen_ids.add(example_id)
 
         examples.append(
