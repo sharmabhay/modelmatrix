@@ -12,6 +12,7 @@ from typing import Sequence
 class EvaluationExample:
     """One test case with an input and its expected answer."""
 
+    id: str
     input: str
     expected: str
 
@@ -19,6 +20,7 @@ class EvaluationExample:
 class ExampleResult:
     """The outcome of evaluating one prediction."""
 
+    id: str
     input: str
     expected: str
     predicted: str
@@ -69,6 +71,7 @@ def evaluate_predictions(
 
         results.append(
             ExampleResult(
+                id=example.id,
                 input=example.input,
                 expected=example.expected,
                 predicted=prediction,
