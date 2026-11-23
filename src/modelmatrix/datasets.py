@@ -1,4 +1,5 @@
 import json
+import hashlib
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -18,6 +19,7 @@ class EvaluationDataset:
     name: str
     version: str
     description: str
+    sha256: str
     examples: tuple[EvaluationExample, ...]
 
 
@@ -51,12 +53,16 @@ def _require_object(value: object, location: str) -> dict:
 def load_dataset(path: str | Path) -> EvaluationDataset:
     """Load and validate an evaluation dataset from a JSON file."""
 
+    # Read the raw bytes of the dataset file to compute its SHA-256 hash and parse its JSON content.
     dataset_path = Path(path)
+    raw_bytes = dataset_path.read_bytes()
     try:
-        with dataset_path.open("r", encoding="utf-8") as file:
-            raw_data = json.load(file)
+        raw_data = json.loads(raw_bytes.decode("utf-8"))
     except json.JSONDecodeError as error:
         raise ValueError(f"Invalid JSON in {dataset_path}: {error}") from error
+
+    # Hash the exact file bytes to ensure integrity and reproducibility.
+    dataset_sha256 = hashlib.sha256(raw_bytes).hexdigest()
 
     raw_data = _require_object(raw_data, "Dataset")
 
@@ -68,6 +74,7 @@ def load_dataset(path: str | Path) -> EvaluationDataset:
     if not isinstance(raw_examples, list) or not raw_examples:
         raise ValueError("'examples' must be a non-empty JSON array.")
 
+    # Validate and construct each example in the dataset.
     examples = []
     seen_ids = set()
     for index, raw_example in enumerate(raw_examples):
@@ -94,5 +101,6 @@ def load_dataset(path: str | Path) -> EvaluationDataset:
         name=name,
         version=version,
         description=description,
+        sha256=dataset_sha256,
         examples=tuple(examples)
     )
