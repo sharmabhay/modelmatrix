@@ -1,0 +1,82 @@
+{
+  "run_id": "8c7ac35cb069",
+  "created_at": "2026-11-25T04:09:34.930320+00:00",
+  "dataset_name": "arithmetic",
+  "dataset_version": "1.0.0",
+  "dataset_sha256": "48e0c0c2f84095ce717dd081ec2d72382776b18cc493a3fb21981475a890c8bf",
+  "total": 10,
+  "correct": 8,
+  "accuracy": 0.8,
+  "results": [
+    {
+      "id": "add_01",
+      "input": "What is 2 + 2?",
+      "expected": "4",
+      "predicted": "4",
+      "correct": true
+    },
+    {
+      "id": "add_02",
+      "input": "What is 3 + 5?",
+      "expected": "8",
+      "predicted": "8",
+      "correct": true
+    },
+    {
+      "id": "sub_01",
+      "input": "What is 10 - 3?",
+      "expected": "7",
+      "predicted": "7",
+      "correct": true
+    },
+    {
+      "id": "mult_01",
+      "input": "What is 4 * 3?",
+      "expected": "12",
+      "predicted": "12",
+      "correct": true
+    },
+    {
+      "id": "mult_02",
+      "input": "What is 0 * 7?",
+      "expected": "0",
+      "predicted": "0",
+      "correct": true
+    },
+    {
+      "id": "div_01",
+      "input": "What is 19 / 4?",
+      "expected": "4.75",
+      "predicted": "5",
+      "correct": false
+    },
+    {
+      "id": "div_02",
+      "input": "What is 0 / 0?",
+      "expected": "undefined",
+      "predicted": "0",
+      "correct": false
+    },
+    {
+      "id": "pow_01",
+      "input": "What is 12 ^ 2?",
+      "expected": "144",
+      "predicted": "144",
+      "correct": true
+    },
+    {
+      "id": "pow_02",
+      "input": "What is 0 ^ 0?",
+      "expected": "1",
+      "predicted": "1",
+      "correct": true
+    },
+    {
+      "id": "fact_01",
+      "input": "What is 5 factorial?",
+      "expected": "120",
+      "predicted": "120",
+      "correct": true
+    }
+  ]
+}

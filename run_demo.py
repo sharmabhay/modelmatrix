@@ -18,7 +18,7 @@ dataset = load_dataset(DATASET_PATH)
 
 # 2. RUN A SIMULATED EVALUATION
 baseline_predictions = ["4", "9", "7", "12", "0", "5", "undefined", "144", "1", "60"]
-candidate_predictions = ["4", "9", "6", "12", "0", "5", "0", "144", "1", "60"]
+candidate_predictions = ["4", "8", "7", "12", "0", "5", "0", "144", "1", "120"]
 
 
 # 3. EVALUATE AND SAVE EACH RUN
