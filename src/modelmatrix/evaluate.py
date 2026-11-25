@@ -64,10 +64,7 @@ def evaluate_predictions(
 
     results = []
     for example, prediction in zip(examples, predictions):
-        correct = (
-            normalize_answer(example.expected)
-            == normalize_answer(prediction)
-        )
+        correct = (normalize_answer(example.expected) == normalize_answer(prediction))
 
         results.append(
             ExampleResult(

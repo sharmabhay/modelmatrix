@@ -31,9 +31,7 @@ def _require_nonempty_string(value: object, field_name: str) -> str:
     """Validate a required string field and return its value."""
 
     if not isinstance(value, str) or not value.strip():
-        raise ValueError(
-            f"'{field_name}' must be a non-empty string."
-        )
+        raise ValueError(f"'{field_name}' must be a non-empty string.")
 
     return value
 
